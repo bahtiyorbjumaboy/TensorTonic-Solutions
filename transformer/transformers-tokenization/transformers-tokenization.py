@@ -22,7 +22,6 @@ class SimpleTokenizer:
         Build vocabulary from a list of texts.
         Add special tokens first, then unique words.
         """
-        # YOUR CODE HERE
         initial_tokens = [self.pad_token, self.unk_token, self.bos_token, self.eos_token]
         for i, token in enumerate(initial_tokens):
             self.word_to_id[token] = i
@@ -46,7 +45,6 @@ class SimpleTokenizer:
         Convert text to list of token IDs.
         Use UNK for unknown words.
         """
-        # YOUR CODE HERE
         tokens = []
         for word in text.lower().split():
             tokens.append(self.word_to_id.get(word, 1))
@@ -57,7 +55,6 @@ class SimpleTokenizer:
         """
         Convert list of token IDs back to text.
         """
-        # YOUR CODE HERE
         words = []
         for token in ids:
             words.append(self.id_to_word.get(token, self.unk_token))
