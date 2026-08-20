@@ -1,0 +1,19 @@
+import torch
+import torch.nn as nn
+
+class Dropout(nn.Module):
+    def __init__(self, p=0.5):
+        super().__init__()
+        self.p = p
+
+    def forward(self, x):
+        """
+        Returns: tensor with dropout applied
+        """
+        if not self.training or self.p == 0:
+            return x
+        elif self.p == 1:
+            return torch.zeros_like(x)
+        else:
+            mask = (torch.rand(x.shape) >= self.p).float()
+            return x * mask / (1 - self.p)
